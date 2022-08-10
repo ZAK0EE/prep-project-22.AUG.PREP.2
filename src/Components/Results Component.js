@@ -11,6 +11,11 @@ export default function ResultsComponent({isLoaded, results, foreResult}) {
             <p>Feels like {results.main.feels_like}°C</p>
             <i><p>{results.name}, {results.sys.country}</p></i>
           </>}
+
+          {isLoaded && foreResult && <>
+            <h3>{foreResult[0][0].dt_txt}</h3>
+          </>}
+          
         </div>
     )
 }
