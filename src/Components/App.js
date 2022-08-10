@@ -5,11 +5,13 @@ import ErrorComponent from "./Error Component";
 import ResultsComponent from "./Results Component";
 import SearchComponent from "./Search Component";
 
+
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [city, setCity] = useState("New York City")
   const [results, setResults] = useState(null);
+  const [foreResult, setforeRes] = useState(null);
 
   const changeCity = (city) => setCity(city);
 
@@ -30,6 +32,36 @@ function App() {
           setError(error);
         }
       )
+
+
+  }, [city])
+
+  useEffect(() => {
+      fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=metric" + "&appid=" + process.env.REACT_APP_APIKEY)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          if (result['cod'] !== "200") {
+            setIsLoaded(false);
+          } else {
+            setIsLoaded(true);
+
+            let temp = [];
+            for(let day = 0; day < 5; day++)
+            {
+              let dayidx = day * 8;
+              temp[day] = (result["list"].slice(dayidx, dayidx + 8));
+            }
+            setforeRes(temp);
+          }
+        },
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      )
+
+
   }, [city])
 
   if (error) {
@@ -40,7 +72,7 @@ function App() {
       <div>
         <h2>Enter a city below 👇</h2>
         <SearchComponent city={city} changeCity={changeCity} />
-        <ResultsComponent isLoaded={isLoaded} results={results}/>
+        <ResultsComponent isLoaded={isLoaded} results={results} foreResult={foreResult}/>
       </div>
     </>
   }
