@@ -4,6 +4,7 @@ import logo from '../mlh-prep.png'
 import ErrorComponent from "./Error Component";
 import ResultsComponent from "./Results Component";
 import SearchComponent from "./Search Component";
+import SearchDateTimeComponent from "./Search Date Time Component";
 
 
 function App() {
@@ -72,6 +73,7 @@ function App() {
       <div>
         <h2>Enter a city below 👇</h2>
         <SearchComponent city={city} changeCity={changeCity} />
+        <SearchDateTimeComponent />
         <ResultsComponent isLoaded={isLoaded} results={results} foreResult={foreResult}/>
       </div>
     </>
