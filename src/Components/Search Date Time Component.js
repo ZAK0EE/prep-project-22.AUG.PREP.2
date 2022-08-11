@@ -8,7 +8,7 @@ export default function SearchDateTimeComponent({myDate, changeDate}) {
   const today = new Date();
   const nextDate = today.setDate(today.getDate() + 5);
   return (
-    <div className='Search'>
+    <div className='Results'>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <DateTimePicker
           renderInput={(props) => <TextField {...props} />}
