@@ -13,8 +13,11 @@ function App() {
   const [city, setCity] = useState("New York City")
   const [results, setResults] = useState(null);
   const [foreResult, setforeRes] = useState(null);
+  
+  const [myDate, setMyDate] = useState(new Date());
 
   const changeCity = (city) => setCity(city);
+  const changeDate = (date) => setMyDate(date);
 
   useEffect(() => {
     fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric" + "&appid=" + process.env.REACT_APP_APIKEY)
@@ -66,8 +69,8 @@ function App() {
       <div>
         <h2>Enter a city below 👇</h2>
         <SearchComponent city={city} changeCity={changeCity} />
-        <SearchDateTimeComponent />
-        <ResultsComponent isLoaded={isLoaded} results={results} foreResult={foreResult}/>
+        <SearchDateTimeComponent myDate = {myDate} changeDate ={changeDate}/>
+        <ResultsComponent isLoaded={isLoaded} results={results} foreResult={foreResult} myDate={myDate.toJSON()}/>
       </div>
     </>
   }
