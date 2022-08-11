@@ -4,8 +4,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 
-export default function SearchDateTimeComponent() {
-  const [myDate, setMyDate] = React.useState(new Date());
+export default function SearchDateTimeComponent({myDate, changeDate}) {
   const today = new Date();
   const nextDate = today.setDate(today.getDate() + 5);
   return (
@@ -16,9 +15,7 @@ export default function SearchDateTimeComponent() {
           label="Select Date and Time"
           inputFormat='yyyy/MM/dd HH:mm:ss'
           value={myDate}
-          onChange={(newDate) => {
-              setMyDate(newDate);
-          }}
+          onChange={ date =>changeDate(date)}
           disablePast={true}
           miniDate={today}
           maxDate={nextDate}
