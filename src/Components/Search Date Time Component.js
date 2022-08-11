@@ -9,19 +9,21 @@ export default function SearchDateTimeComponent() {
   const today = new Date();
   const nextDate = today.setDate(today.getDate() + 5);
   return (
-    <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <DateTimePicker
-        renderInput={(props) => <TextField {...props} />}
-        label="Select Date and Time"
-        inputFormat='yyyy/MM/dd HH:mm:ss'
-        value={myDate}
-        onChange={(newDate) => {
-            setMyDate(newDate);
-        }}
-        disablePast={true}
-        miniDate={today}
-        maxDate={nextDate}
-      />
-    </LocalizationProvider>
+    <div className='Search'>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <DateTimePicker
+          renderInput={(props) => <TextField {...props} />}
+          label="Select Date and Time"
+          inputFormat='yyyy/MM/dd HH:mm:ss'
+          value={myDate}
+          onChange={(newDate) => {
+              setMyDate(newDate);
+          }}
+          disablePast={true}
+          miniDate={today}
+          maxDate={nextDate}
+        />
+      </LocalizationProvider>
+    </div>
   );
 }

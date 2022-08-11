@@ -19,6 +19,16 @@ input {
   width: 200px
 }
 
+.Search {
+  background-color: white;
+  margin-top: 20px;
+  margin-left: 630px;
+  padding: 10px;
+  max-width: 260px;
+  max-height: 60px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
 .Results {
   background-color: white;
   margin-left: 150px;
