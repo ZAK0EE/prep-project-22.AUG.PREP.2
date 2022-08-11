@@ -46,14 +46,7 @@ function App() {
             setIsLoaded(false);
           } else {
             setIsLoaded(true);
-
-            let temp = [];
-            for(let day = 0; day < 5; day++)
-            {
-              let dayidx = day * 8;
-              temp[day] = (result["list"].slice(dayidx, dayidx + 8));
-            }
-            setforeRes(temp);
+            setforeRes(result);
           }
         },
         (error) => {

@@ -13,7 +13,7 @@ export default function ResultsComponent({isLoaded, results, foreResult}) {
           </>}
 
           {isLoaded && foreResult && <>
-            <h3>{foreResult[0][0].dt_txt}</h3>
+            <h3>{foreResult.list[0].dt_txt}</h3>
           </>}
           
         </div>
