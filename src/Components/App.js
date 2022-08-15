@@ -12,7 +12,7 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [city, setCity] = useState("New York City")
   const [results, setResults] = useState(null);
-  const [foreResult, setforeRes] = useState(null);
+  const [foreResult, setforeRes] = useState([]);
   
   const [myDate, setMyDate] = useState(new Date());
 
@@ -48,8 +48,14 @@ function App() {
           if (result['cod'] !== "200") {
             setIsLoaded(false);
           } else {
+
+            let eachDayData = (data) => {
+              // Extract on 5 objects for weather at 15:00:00 of each day
+              return data.list.filter(item => {   return item.dt_txt.includes("15:00:00") })
+            }
+
             setIsLoaded(true);
-            setforeRes(result);
+            setforeRes(eachDayData(result));
           }
         },
         (error) => {
