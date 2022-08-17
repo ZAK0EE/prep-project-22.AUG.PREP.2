@@ -1,10 +1,5 @@
-import WeatherDayCard from "./WeatherDayCard"
 
 export default function ResultsComponent({isLoaded, results, foreResult, myDate}) {
-
-  let WeatherDayCardList = (data) => {
-    return data.map((item, index) => <WeatherDayCard data={item} key={index} />) 
-  }
 
     return (
         <div className="Results">
@@ -17,14 +12,9 @@ export default function ResultsComponent({isLoaded, results, foreResult, myDate}
             <i><p>{results.name}, {results.sys.country}</p></i>
           </>}
 
-          {isLoaded && foreResult &&<div className="row justify-content-center">
-
-            {WeatherDayCardList(foreResult)}
-
-          </div>}
-          {/* {isLoaded && foreResult && <>
+          {isLoaded && foreResult && <>
             <h3>{myDate}</h3>
-          </>} */}
+          </>}
           
         </div>
     )
