@@ -5,7 +5,7 @@ import logo from '../mlh-prep.png';
 import ErrorComponent from "./Error";
 import ResultsComponent from "./Results";
 import SearchComponent from "./Search";
-import SearchDateTimeComponent from "./Search Date Time Component";
+import SearchDateTimeComponent from "./SearchDateTimeComponent";
 import RequiredItems from "./RequiredItems";
 import GetMyLocationButton from "./GetMyLocationButton";
 import Map from "./Map";
@@ -114,6 +114,7 @@ export default function App() {
           <div className="card-container">
             <ResultsComponent isLoaded={isLoaded} results={results}/>
             {isLoaded && results && <RequiredItems weatherKind={results.weather[0].main} />}
+            <SearchDateTimeComponent myDate = {myDate} changeDate ={changeDate}/>
           </div>
           <Map setIsLoaded={setIsLoaded} setResults={setResults} setError={setError} coords={coords} />
           <Footer />
